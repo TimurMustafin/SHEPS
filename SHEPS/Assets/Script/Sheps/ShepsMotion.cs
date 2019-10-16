@@ -6,7 +6,7 @@ using UnityEngine;
 public class ShepsMotion : MonoBehaviour
 {
     public static event Action OnShepsDying;
-    public GameMaster gameMaster;
+    public static event Action OnShepsFalling;    
     [HideInInspector]
     public bool IsAttacked;
     [HideInInspector]
@@ -92,7 +92,8 @@ public class ShepsMotion : MonoBehaviour
 
         IsFalling = true;
         GetComponent<Rigidbody>().AddForce(transform.forward * 3 + transform.up, ForceMode.Impulse);
-        gameMaster.GameIsOver();
-        
+        OnShepsFalling();
+
+
     }
 }

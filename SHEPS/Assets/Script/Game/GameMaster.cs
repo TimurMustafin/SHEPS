@@ -33,6 +33,10 @@ public class GameMaster : MonoBehaviour
             Debug.Log("EventHandler: Sheps is Dead!!!");
             GameIsOver();
         };
+        ShepsMotion.OnShepsFalling += () => {
+            Debug.Log("EventHandler: Sheps is Fall!!!");
+            GameIsOver();
+        };
 
     }
     

@@ -46,7 +46,7 @@ public class ZombieMotion : MonoBehaviour
 
 
         ShepsSoundBomb.OnSoundExplosion += () => {
-            if (currentTarget)
+            if (currentTarget && this != null)
             {
                 Vector3 direction = transform.position - currentTarget.position;
                 if(direction.magnitude < ShepsSoundBomb.DamageZoneRadius)
@@ -101,20 +101,24 @@ public class ZombieMotion : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.name == "Sheps")
+        if (this != null)
         {
-            IsAttack = true;
+            if (collision.collider.name == "Sheps")
+            {
+                IsAttack = true;
 
-        }
-        if (collision.collider.tag == "Fireball")
-        {
-            IsDying = true;
-            GameObject dyingEffect = Instantiate(DyingEffect, transform.position, Quaternion.identity);
-            dying.Dying();
-            gameObject.SetActive(false);
-            Destroy(dyingEffect, 2f);
+            }
+            if (collision.collider.tag == "Fireball")
+            {
+                IsDying = true;
+                GameObject dyingEffect = Instantiate(DyingEffect, transform.position, Quaternion.identity);
+                dying.Dying();
+                gameObject.SetActive(false);
+                Destroy(dyingEffect, 2f);
 
+            }
         }
+       
     }
 
     void StopGame()
