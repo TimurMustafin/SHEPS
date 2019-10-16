@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Sheps
+  - Zombie
+  - Fireball
+  - Dying
+  - EmptyGrave
   layers:
   - Default
   - TransparentFX
